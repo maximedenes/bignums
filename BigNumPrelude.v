@@ -18,6 +18,7 @@ Require Import ArithRing.
 Require Export ZArith.
 Require Export Znumtheory.
 Require Export Zpow_facts.
+Require Int63.
 
 Declare ML Module "bignums_syntax_plugin".
 
