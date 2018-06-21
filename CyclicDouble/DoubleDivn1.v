@@ -249,7 +249,6 @@ Section GENDIVN1.
    rewrite (Z.mul_comm (([!n|hh!] * 2 ^ [|p|] +
       [!n|hl!] / 2 ^ (Zpos (w_digits << n) - [|p|])))).
    rewrite  Zmult_mod_distr_l;auto with zarith.
-   ring.
    rewrite Zpower_exp;auto with zarith.
    assert (0 < Zpos (w_digits << n)). unfold Z.lt;reflexivity.
    auto with zarith.
@@ -305,10 +304,6 @@ Section GENDIVN1.
  Lemma spec_double_digits:forall n, Zpos w_digits <= Zpos (w_digits << n).
  Proof.
   induction n;simpl;auto with zarith.
-  change (Zpos (xO (w_digits << n))) with
-    (2*Zpos (w_digits << n)).
-  assert (0 < Zpos w_digits) by reflexivity.
-  auto with zarith.
  Qed.
 
  Lemma spec_high : forall n (x:word w n),
@@ -474,7 +469,6 @@ Section GENDIVN1.
     auto with zarith.
    rewrite H9.
    apply Zdiv_lt_upper_bound;auto with zarith.
-   rewrite Z.mul_comm;auto with zarith.
    exact (spec_double_to_Z w_digits w_to_Z spec_to_Z n a).
  Qed.
 
@@ -513,7 +507,6 @@ Section GENDIVN1.
   assert (H2 := spec_double_modn1_aux n a b).
   rewrite H2;destruct (double_divn1 n a b) as (q,r).
   simpl;apply Zmod_unique with (double_to_Z w_digits w_to_Z n q);auto with zarith.
-  destruct H1 as (h1,h2);rewrite h1;ring.
  Qed.
 
 End GENDIVN1.

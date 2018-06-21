@@ -72,8 +72,6 @@ Hint Resolve Z.lt_gt Z.le_ge Z_div_pos: zarith.
   intros a b c d beta H1 (H3, H4) (H5, H6).
   assert (a - c < 1); auto with zarith.
   apply Z.mul_lt_mono_pos_r with beta; auto with zarith.
-  apply Z.le_lt_trans with (d  - b); auto with zarith.
-  rewrite Z.mul_sub_distr_r; auto with zarith.
  Qed.
 
  Theorem beta_lex_inv: forall a b c d beta,
@@ -132,7 +130,6 @@ Hint Resolve Z.lt_gt Z.le_ge Z_div_pos: zarith.
   apply Z.le_lt_trans with  ((beta-1)*(beta-1)+(beta-1)); auto with zarith.
   apply Z.add_le_mono; auto with zarith.
   apply Z.mul_le_mono_nonneg; auto with zarith.
-  rewrite ?Z.mul_sub_distr_l, ?Z.mul_sub_distr_r, Z.pow_2_r; auto with zarith.
  Qed.
 
  Theorem mult_add_ineq2: forall x y c cross beta,
@@ -146,7 +143,6 @@ Hint Resolve Z.lt_gt Z.le_ge Z_div_pos: zarith.
   apply Z.le_lt_trans with ((beta-1)*(beta-1)+(2*beta-2));auto with zarith.
   apply Z.add_le_mono; auto with zarith.
   apply Z.mul_le_mono_nonneg; auto with zarith.
-  rewrite ?Z.mul_sub_distr_l, ?Z.mul_sub_distr_r, Z.pow_2_r; auto with zarith.
  Qed.
 
 Theorem mult_add_ineq3: forall x y c cross beta,

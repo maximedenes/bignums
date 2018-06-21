@@ -186,8 +186,6 @@ Section POS_MOD.
   apply Z.lt_le_trans with (1:= U2).
   unfold base; rewrite spec_ww_digits.
   apply Zpower_le_monotone; auto with zarith.
-  split; auto with zarith.
-  rewrite Pos2Z.inj_xO; auto with zarith.
  Qed.
 
 End POS_MOD.
@@ -1053,7 +1051,6 @@ Section DoubleDivGt.
    assert (H3 := spec_ww_div_gt_aux ah al bl H H0).
    destruct (ww_div_gt_aux ah al bh bl) as (q,r);simpl. simpl in H,H3.
    destruct H3;apply Zmod_unique with [[q]];zarith.
-   rewrite H1;ring.
   Qed.
 
   Lemma spec_w_mod_gt_eq : forall a b, [|a|] > [|b|] -> 0 <[|b|] ->
